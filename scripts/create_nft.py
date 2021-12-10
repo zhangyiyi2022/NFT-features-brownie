@@ -49,7 +49,7 @@ def create_nft(mint_amount, mint_price):
 
 
 def main():
-    flip_presale_state
+    flip_presale_state()
     set_new_token_price(99900000000000000)
     flip_sale_state()
     create_nft(1, 99900000000000000)
