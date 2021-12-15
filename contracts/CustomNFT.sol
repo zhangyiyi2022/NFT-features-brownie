@@ -14,9 +14,9 @@ contract CustomNFT is ERC721URIStorage, Ownable {
     using Strings for uint256;
 
     uint256 private NFTPrice = 88800000000000000;
-    uint256 private mintLimit = 15;
-    uint256 public presaleMintLimit = 5;
-    uint256 public constant tokenSupply = 10000;
+    uint256 private mintLimit = 10;
+    uint256 public presaleMintLimit = 3;
+    uint256 public constant tokenSupply = 5000;
 
     bool public saleOpen;
     bool public revealed;
@@ -202,9 +202,11 @@ contract CustomNFT is ERC721URIStorage, Ownable {
     function withdraw() public onlyOwner {
         uint256 _balance = address(this).balance;
         uint256 _split = _balance.mul(90).div(100);
-        (bool sentCom, bytes memory data) = community.call{value: _split}("");
+        (bool sentCom, bytes memory data_com) = community.call{value: _split}(
+            ""
+        );
         require(sentCom, "Failed to send Ether");
-        (bool sentDev, bytes memory data1) = dev.call{
+        (bool sentDev, bytes memory data_dev) = dev.call{
             value: _balance.sub(_split)
         }("");
         require(sentDev, "Failed to send Ether");
