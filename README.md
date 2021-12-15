@@ -26,8 +26,8 @@ pipx install eth-brownie
 
 2. Clone this repo
 ```
-brownie bake nft-with-features
-cd nft
+git clone https://github.com/mikaelaakko/nft-with-features.git
+cd nft-with-features
 ```
 
 1. [Install ganache-cli](https://www.npmjs.com/package/ganache-cli)
