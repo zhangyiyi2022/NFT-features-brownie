@@ -31,6 +31,7 @@ contract CustomNFT is ERC721URIStorage, Ownable {
     string private notRevealedUri;
     string private contractURI;
     string public baseExtension = ".json";
+    string public provenance_hash;
 
     address private community = 0x0000000000000000000000000000000000000000;
     address private dev = 0x0000000000000000000000000000000000000000;
@@ -197,6 +198,10 @@ contract CustomNFT is ERC721URIStorage, Ownable {
                     )
                 )
                 : "";
+    }
+
+    function setProvenanceHash(string memory provenanceHash) public onlyOwner {
+        provenance_hash = provenanceHash;
     }
 
     function withdraw() public onlyOwner {
