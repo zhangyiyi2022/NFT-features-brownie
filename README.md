@@ -11,7 +11,7 @@ Implementation of custom NFT smart contract in a python environment with brownie
 - Adjust mint limit
 - Reserve tokens
 - Set provenance hash
-- custom withdraw function to multiple addresses
+- Custom withdraw function to multiple addresses
 
 
 ## Prerequisites
