@@ -1,6 +1,6 @@
 # Custom NFT project
 
-Implementation of custom NFT smart contract in a python environment with brownie.
+Implementation of custom NFT smart contract in a python environment with brownie. The contract is self-audited and this repo provides comprehensive tests for the contract.
 
 ## Features
 
