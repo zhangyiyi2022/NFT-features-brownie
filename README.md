@@ -9,7 +9,7 @@ Implementation of custom NFT smart contract in a python environment with brownie
 - Custom reveal to prevent sniping
 - Adjust mint price
 - Adjust mint limit
-- Reserve tokens
+- Reserve and airdrop tokens
 - Set provenance hash
 - Custom withdraw function to multiple addresses
 
