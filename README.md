@@ -74,9 +74,10 @@ Or you can run the above in your shell.
 # Usage
 
 The NFT smart contract is in the `contracts` folder: 
-- `CustomNFT.sol`
+- `ERC721Custom.sol` -- For whitelist + presale projects
+- `ERC721Standard.sol` -- Standard without presale
 
-You can 100% use the rinkeby testnet to see your NFTs rendered on opensea, but it's suggested that you test and build first on a local development network so you don't have to wait as long for transactions. 
+You can use the rinkeby testnet to see your NFTs rendered on opensea, but it's suggested that you test and build first on a local development network so you don't have to wait as long for transactions. 
 
 ### Running Scripts
 
