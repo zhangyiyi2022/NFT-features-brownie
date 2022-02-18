@@ -1,10 +1,10 @@
-from brownie import CustomNFT
+from brownie import ERC721Custom
 from scripts.helper_functions import get_account
 
 
 def flip_presale_state():
     account = get_account()
-    contract = CustomNFT[len(CustomNFT) - 1]
+    contract = ERC721Custom[len(ERC721Custom) - 1]
 
     sale_tx = contract.presaleStateChange({"from": account})
     sale_tx.wait(1)
@@ -14,7 +14,7 @@ def flip_presale_state():
 
 def set_new_token_price(new_price):
     account = get_account()
-    contract = CustomNFT[len(CustomNFT) - 1]
+    contract = ERC721Custom[len(ERC721Custom) - 1]
 
     set_tx = contract.setTokenPrice(new_price, {"from": account})
     set_tx.wait(1)
@@ -23,7 +23,7 @@ def set_new_token_price(new_price):
 
 def flip_sale_state():
     account = get_account()
-    contract = CustomNFT[len(CustomNFT) - 1]
+    contract = ERC721Custom[len(ERC721Custom) - 1]
 
     sale_tx = contract.saleStateChange({"from": account})
     sale_tx.wait(1)
@@ -36,7 +36,7 @@ def create_nft(mint_amount, mint_price):
     fee = mint_price * mint_amount
 
     account = get_account()
-    contract = CustomNFT[len(CustomNFT) - 1]
+    contract = ERC721Custom[len(ERC721Custom) - 1]
 
     create_tx = contract.createToken(
         mint_amount,

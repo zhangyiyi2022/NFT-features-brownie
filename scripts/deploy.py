@@ -1,4 +1,4 @@
-from brownie import CustomNFT
+from brownie import ERC721Custom
 import os
 from scripts.helper_functions import get_account
 
@@ -11,14 +11,14 @@ def deploy_nft():
 
     publish_source = True if os.getenv("ETHERSCAN_TOKEN") else False
 
-    madcroc_nft = CustomNFT.deploy(
+    custom_nft = ERC721Custom.deploy(
         token_uri,
         contract_uri,
         {"from": account},
         publish_source=publish_source,
     )
 
-    print(f"Token {madcroc_nft.address} deployed!")
+    print(f"Token {custom_nft.address} deployed!")
 
 
 def main():

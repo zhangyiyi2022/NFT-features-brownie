@@ -5,8 +5,8 @@ contract_uri = "INSERT CONTRACTURI HERE"
 
 
 @pytest.fixture(scope="module")
-def token(CustomNFT, accounts):
-    return CustomNFT.deploy(token_uri, contract_uri, {"from": accounts[0]})
+def token(ERC721Custom, accounts):
+    return ERC721Custom.deploy(token_uri, contract_uri, {"from": accounts[0]})
 
 
 @pytest.fixture(scope="module")

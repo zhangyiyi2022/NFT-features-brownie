@@ -8,22 +8,17 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-contract CustomNFT is ERC721URIStorage, Ownable {
+contract ERC721Standard is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     using SafeMath for uint256;
     using Strings for uint256;
 
     uint256 private NFTPrice = 88800000000000000;
     uint256 private mintLimit = 10;
-    uint256 public presaleMintLimit = 3;
     uint256 public constant tokenSupply = 5000;
 
     bool public saleOpen;
     bool public revealed;
-    bool public presaleOpen;
-
-    mapping(address => bool) private whiteList;
-    mapping(address => uint256) private presaleMints;
 
     Counters.Counter private _tokenIdCount;
 
@@ -64,51 +59,8 @@ contract CustomNFT is ERC721URIStorage, Ownable {
         revealed = true;
     }
 
-    function setPresaleMintLimit(uint256 _presaleMintLimit) external onlyOwner {
-        presaleMintLimit = _presaleMintLimit;
-    }
-
-    function presaleStateChange() public onlyOwner {
-        presaleOpen = !presaleOpen;
-    }
-
     function saleStateChange() public onlyOwner {
         saleOpen = !saleOpen;
-    }
-
-    function addToWhiteList(address[] calldata addresses) external onlyOwner {
-        for (uint256 i = 0; i < addresses.length; i++) {
-            if (!whiteList[addresses[i]]) {
-                whiteList[addresses[i]] = true;
-                presaleMints[addresses[i]] = 0;
-            }
-        }
-    }
-
-    function isOnWhiteList(address wallet) external view returns (bool) {
-        return whiteList[wallet];
-    }
-
-    function createTokenPresale(uint256 _tokenAmount) public payable {
-        require(presaleOpen, "Presale is not open");
-        require(
-            NFTPrice * _tokenAmount <= msg.value,
-            "Insufficient amount of funds."
-        );
-        require(
-            tokenSupply >= _tokenIdCount.current().add(_tokenAmount),
-            "Cannot exceed the max supply!"
-        );
-        require(whiteList[msg.sender] == true, "Not on whitelist");
-        require(
-            presaleMints[msg.sender] + _tokenAmount <= presaleMintLimit,
-            "Over the presale minting limit"
-        );
-
-        presaleMints[msg.sender] += _tokenAmount;
-        for (uint256 i = 0; i < _tokenAmount; i++) {
-            mintNFT();
-        }
     }
 
     function createToken(uint256 _nftAmount) public payable {
